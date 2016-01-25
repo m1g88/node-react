@@ -1,0 +1,588 @@
+@font-face {
+  font-family: dtac;
+  src: url("/fonts/dtac2013_bl-webfont.eot");
+  src: url("/fonts/dtac2013_bl-webfont.eot?#iefix") format('embedded-opentype'), url("/fonts/dtac2013_bl-webfont.woff2") format('woff2'), url("/fonts/dtac2013_bl-webfont.woff") format('woff'), url("/fonts/dtac2013_bl-webfont.ttf") format('truetype'), url("/fonts/dtac2013_bl-webfont.svg#dtac_2013bold") format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: dtac;
+  src: url("/fonts/dtac2013_lt-webfont.eot");
+  src: url("/fonts/dtac2013_lt-webfont.eot?#iefix") format('embedded-opentype'), url("/fonts/dtac2013_lt-webfont.woff2") format('woff2'), url("/fonts/dtac2013_lt-webfont.woff") format('woff'), url("/fonts/dtac2013_lt-webfont.ttf") format('truetype'), url("/fonts/dtac2013_lt-webfont.svg#dtac_2013light") format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: dtac;
+  src: url("/fonts/dtac2013_rg-webfont.eot");
+  src: url("/fonts/dtac2013_rg-webfont.eot?#iefix") format('embedded-opentype'), url("/fonts/dtac2013_rg-webfont.woff2") format('woff2'), url("/fonts/dtac2013_rg-webfont.woff") format('woff'), url("/fonts/dtac2013_rg-webfont.ttf") format('truetype'), url("/fonts/dtac2013_rg-webfont.svg#dtac_2013regular") format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+.wrapper {
+  padding: 30px;
+  margin-top: 64px;
+}
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.form-control {
+  color: #666;
+}
+.panel {
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+  font-family: dtac, sans-serif;
+}
+.panel small {
+  font-family: thonburi, sans-serif;
+}
+.panel small.dtac {
+  font-family: dtac, sans-serif;
+}
+.panel-body {
+  padding: 20px;
+}
+.panel-body.box {
+  font-family: thonburi, sans-serif;
+}
+.panel-body.box .input-group-addon {
+  border: 1px solid #e2e2e4;
+  border-left: none;
+  border-right: none;
+}
+.panel-body.box .btn {
+  width: 100%;
+}
+.panel-body .panel {
+  border: 1px solid #ddd;
+  box-shadow: none;
+}
+.panel-body table {
+  margin-bottom: 10px;
+}
+.panel-heading {
+  background-color: #f4f4f4;
+  border-top: 1px solid #fcfcfc;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 12px 20px 10px;
+  border-radius: 4px 4px 0 0;
+}
+.panel-heading:not(:first-child) {
+  border-top: 1px solid #eee;
+  border-radius: 0;
+}
+.panel-heading .nav {
+  margin: -12px -20px -12px;
+}
+.panel-heading .nav > li > a {
+  color: #ededed;
+  font-size: 16px;
+  font-weight: 600;
+}
+.panel-heading .nav > li.active > a {
+  color: #1b429a;
+}
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+body {
+  color: #333;
+  background: #e7e7e7;
+  font-family: sans-serif;
+  font-size: 14.5px;
+}
+h1 {
+  font-size: 1.8em;
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.3em;
+  margin-top: 0;
+}
+.btn-default {
+  background: linear-gradient(to bottom, #00bce4 0%, rgba(43,118,193,0.52) 100%); /* W3C */
+  background-color: #00bce4;
+  border-color: #00bce4;
+}
+.btn-default:hover {
+  border-color: #57c8f1;
+  background: linear-gradient(to bottom, #57c8f1 0%, rgba(43,118,193,0.52) 100%); /* W3C */
+  background-color: #57c8f1;
+}
+.btn-default:active,
+.btn-default:focus {
+  background: none;
+  border-color: #1b429a;
+  background-color: #1b429a;
+}
+.small {
+  font-size: 0.9em;
+}
+.brand {
+  height: 64px;
+  background: none;
+  width: auto;
+}
+.brand small {
+  font-size: 15px;
+  font-family: dtac, sans-serif;
+  color: #666;
+  padding: 22px 16px 0;
+  display: inline-block;
+  font-weight: 500;
+}
+a {
+  transition: 300ms;
+}
+a.logo {
+  margin: 14px 0 0 14px;
+}
+.back-group {
+  margin-bottom: 20px;
+}
+.top-nav {
+  margin-top: 16px;
+}
+.top-nav .username {
+  font-size: 13px;
+  font-family: dtac, sans-serif;
+  font-weight: 600;
+  color: #666;
+}
+.top-nav ul.top-menu > li {
+  margin-left: 12px;
+}
+.top-nav ul.top-menu > li > a {
+  padding: 4px 12px !important;
+}
+.caret {
+  margin-left: 4px;
+}
+.shop-logo img {
+  margin-top: 6px;
+  width: 100%;
+  border-radius: 0;
+}
+#sidebar {
+  width: 200px;
+  background: linear-gradient(to bottom, #00bce4 0%, rgba(43,118,193,0.52) 100%); /* W3C */
+  background-color: #00bce4;
+}
+ul.sidebar-menu {
+  padding-top: 66px;
+}
+ul.sidebar-menu li {
+  border-bottom: 0;
+}
+ul.sidebar-menu li a {
+  font-family: dtac, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 14px 0 12px 20px;
+  color: #ededed;
+}
+ul.sidebar-menu li a i {
+  padding-right: 16px;
+  font-size: 16px;
+}
+ul.sidebar-menu li a.active i {
+  color: #ededed;
+}
+ul.sidebar-menu li a.active,
+ul.sidebar-menu li a.active:hover,
+ul.sidebar-menu li a:focus {
+  background: linear-gradient(to bottom, #2870b6 0%, #2d7cca 100%); /* W3C */
+  background-color: #2d7ccb;
+  color: #ededed;
+}
+ul.sidebar-menu li a:hover {
+  background: linear-gradient(to bottom, #1996d1 0%, #1ba1e0 100%); /* W3C */
+  background-color: #1ba1e0;
+  color: #ededed;
+}
+ul.sidebar-menu li a:hover i,
+ul.sidebar-menu li a:focus i {
+  color: #ededed;
+}
+#main-content {
+  margin-left: 200px;
+}
+.breadcrumb > li {
+  font-family: dtac, sans-serif;
+  font-weight: 600;
+}
+.breadcrumb > li.active {
+  color: #aaa;
+}
+.text-blue {
+  color: #00bce4;
+}
+.text-green {
+  color: #70b806;
+}
+.text-orange {
+  color: #f90;
+}
+.text-yellow {
+  color: #fdba31;
+}
+.text-red {
+  color: #ee3827;
+}
+.btn {
+  font-weight: bold;
+  font-family: dtac, sans-serif;
+  font-size: 13px;
+}
+.btn.large {
+  font-size: 18px;
+  padding: 10px 18px 8px;
+}
+.btn.alt {
+  font-size: 13px;
+  padding: 4px 8px;
+}
+.btn.alt.blue {
+  color: #00bce4;
+  border-color: #00bce4;
+}
+.btn.alt.blue:hover {
+  background-color: #00bce4;
+  color: #fff;
+  border-color: #00bce4;
+}
+.btn.alt.grey {
+  color: #666;
+  border-color: #666;
+}
+.btn.alt.grey:hover {
+  background-color: #666;
+  color: #fff;
+  border-color: #666;
+}
+.btn.alt.red {
+  color: #ee3827;
+  border-color: #ee3827;
+}
+.btn.alt.red:hover {
+  background-color: #ee3827;
+  color: #fff;
+  border-color: #ee3827;
+}
+.tab-bg-blue {
+  border-top: none;
+  background: linear-gradient(to bottom, #00bce4 0%, rgba(43,118,193,0.24) 100%) !important /* W3C */;
+  background-color: #00bce4 !important;
+}
+.tab-bg-blue li a:hover {
+  color: #ededed !important;
+  background: rgba(255,255,255,0.24) !important;
+}
+.tab-bg-blue li.active a {
+  color: #00bce4 !important;
+}
+.tab-bg-blue li.active a:hover {
+  background: #fff !important;
+}
+.balance-card {
+  text-align: center;
+  min-height: 83px;
+}
+.balance-card.transferable span {
+  color: #00bce4;
+}
+.balance-card.transferable span .btn {
+  color: #00bce4;
+  border-color: #00bce4;
+  font-size: 13px;
+  font-weight: bold;
+}
+.balance-card.transferable span .btn:hover {
+  background-color: #00bce4;
+  color: #fff;
+  border-color: #00bce4;
+}
+.balance-card span {
+  display: block;
+  font-size: 36px;
+  color: #888;
+}
+.balance-card span.desc {
+  color: #bbb;
+  font-size: 20px;
+}
+.balance-card .btn {
+  padding: 4px 8px;
+  margin: 0 0 4px 12px;
+  font-size: 16px;
+}
+.help-block {
+  font-family: thonburi, sans-serif;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.pui-table {
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #666;
+}
+.pui-table >thead >tr >th {
+  color: #111;
+  border-bottom: 1px solid #eee;
+  background-color: #f2f2f2;
+}
+.pui-table >tbody >tr >td {
+  border-bottom: 1px solid #eee;
+  color: #666;
+  font-family: thonburi, sans-serif;
+  font-size: 14px;
+}
+.pui-table >tbody >tr >td a:hover {
+  color: #f90;
+}
+.pui-table >tbody >tr:hover >td {
+  background: #f8f8f8;
+  color: #111;
+}
+.pui-table >tbody >tr:first-child td {
+  border-top: none;
+}
+.pui-table >tfoot {
+  color: #666;
+  font-family: thonburi, sans-serif;
+  font-size: 13px;
+}
+.pui-table.transaction tbody .green {
+  color: #70b806;
+}
+.pui-table.transaction tbody .red {
+  color: #ee3827;
+}
+.pui-table.transaction tbody .orange {
+  color: #f90;
+}
+.pui-table.transaction tbody .blue {
+  color: #00bce4;
+}
+.pui-table.transaction tbody .grey {
+  color: #666;
+}
+.pui-table.transaction tbody .remark {
+  padding-top: 20px;
+}
+.pui-table.transaction tbody .remark span {
+  margin-right: 10px;
+}
+.pui-table.transaction tbody .remark i {
+  margin-right: 5px;
+}
+.pui-table.transaction tbody tr.income td:first-child {
+  color: #70b806;
+}
+.pui-table.transaction tbody tr.expense td:first-child {
+  color: #ee3827;
+}
+.pui-table.transaction tbody tr.refund td:first-child {
+  color: #fdba31;
+}
+.pui-table.transaction tbody tr .deposit {
+  text-align: right;
+  color: #70b806;
+}
+.pui-table.transaction tbody tr .withdrawal {
+  text-align: right;
+  color: #ee3827;
+}
+.pui-table.transaction tbody tr .withdrawal .refund {
+  color: #fdba31;
+}
+.pui-table.transaction tbody tr .balance {
+  text-align: right;
+}
+.pui-table.transaction tbody tr.failed td.red {
+  color: #a6a6a6;
+}
+.pui-table.transaction tbody tr.failed td.green {
+  color: #a6a6a6;
+}
+.pui-table.transaction tbody tr.failed td a {
+  color: #777;
+}
+.pui-table.charges tbody tr td .badge {
+  background-color: #00bce4;
+  padding: 4px 12px;
+}
+.pui-table.charges tbody tr.successfully td:first-child {
+  color: #70b806;
+}
+.pui-table.charges tbody tr.successfully td:nth-child(2) {
+  color: #fdba31;
+}
+.pui-table.charges tbody tr.waiting td:first-child {
+  color: #00bce4;
+}
+.pui-table.charges-detail tbody tr td:first-child {
+  width: 28%;
+}
+.pui-table.charges-detail tbody tr td .transfer-date {
+  display: block;
+  font-size: 13px;
+}
+.pui-table.charges-detail tbody tr td strong {
+  color: #666;
+  font-weight: 400;
+}
+.pui-table.charges-detail tbody tr.total td {
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  color: #111;
+}
+.pui-table.charges-detail tbody tr.total td.amount {
+  white-space: nowrap;
+}
+.pui-table.charges-detail.normal tbody tr:last-child td {
+  font-size: 16px;
+  border-top: 1px solid #eee;
+}
+.pui-table.alt >thead >tr >th {
+  color: #fff;
+  border-bottom: none;
+  background-color: #1b429a;
+}
+.charges-summary h1 {
+  background-color: #70b806;
+  color: #fff;
+  margin: -20px -20px 15px;
+  border-radius: 4px 4px 0 0;
+  padding: 14px 15px 10px;
+  font-size: 22px;
+}
+.charges-summary h2 {
+  font-size: 36px;
+  margin-top: 0;
+  text-align: right;
+  position: relative;
+}
+.charges-summary h2 span {
+  position: absolute;
+  font-size: 13px;
+  left: 0;
+  top: 14px;
+  color: #666;
+}
+.charges-summary .status {
+  color: #666;
+  font-size: 13px;
+  font-family: sans-serif;
+}
+.charges-summary .status b {
+  color: #111;
+}
+.charges-summary .status p {
+  margin: 4px 0 0;
+}
+.charges-summary .status i {
+  margin: 0 4px 0 2px;
+}
+.charges-summary.waiting h1 {
+  background-color: #00bce4;
+}
+.charges-summary.waiting .amount span:first-child {
+  color: #00bce4;
+}
+.charges-summary.waiting .amount span.label {
+  background: #00bce4;
+}
+.charges-summary.failed h1 {
+  background-color: #666;
+}
+.charges-summary.failed .amount span:first-child {
+  color: #666;
+}
+.charges-summary.failed .amount span.label {
+  background: #666;
+}
+.refund {
+  padding: 28px 0 0;
+}
+.badge {
+  background: #fafafa;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 4px 12px;
+  font-weight: normal;
+}
+.datepicker-dropdown {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+#search-result table {
+  margin-top: 10px;
+}
+/* DASHBOARD */
+.morris-hover.morris-default-style {
+  border-radius: 4px;
+  padding: 8px;
+  color: #333;
+  background: rgba(255,255,255,0.9);
+  border: solid 1px rgba(230,230,230,0.8);
+  font-family: thonburi, sans-serif;
+  font-size: 12px;
+  text-align: center;
+}

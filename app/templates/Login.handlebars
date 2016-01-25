@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <link rel="stylesheet" type="text/css" href="css/clndr.css">
+    <link rel="stylesheet" type="text/css" href="css/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  <body class="login-body">
+    <section id="container">
+      <div class="container">
+        <div class="brand"><a href="index.html" class="logo"><img src="images/logo.png"></a>
+          <div class="btn-group pull-right"><a href="#" class="btn active">TH</a><a href="#" class="btn">EN</a></div>
+        </div>
+        <form action="/login" method="post" class="form-signin">
+          <h2 class="form-signin-heading">ระบบจัดการธุรการสำหรับร้านค้า</h2>
+          <div class="login-wrap">
+            <div class="user-login-info">
+              <input type="text" placeholder="ชื่อผู้ใช้" autofocus="" name="username" class="form-control" value="mic@paysbuy.com">
+              <input type="password" placeholder="รหัสผ่าน" name="password" class="form-control" value="1234">
+              <div class="text-right"><a data-toggle="modal" href="#myModal"><small>ลืมรหัสผ่าน?</small></a></div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-login btn-block">เข้าสู่ระบบ</button>
+            <div class="action clearfix"></div>
+          </div>
+        </form>
+        <div class="register">สำหรับร้านค้าที่ยังไม่มีบัญชีเพย์สบาย:<a href="#"> สมัครสมาชิก</a>
+          <div id="myModal" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                  <h4 class="modal-title">Forgot Password ?</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Enter your e-mail address below to reset your password.</p>
+                  <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                </div>
+                <div class="modal-footer">
+                  <button data-dismiss="modal" type="button" class="btn btn-default">Cancel</button>
+                  <button type="button" class="btn btn-success">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
