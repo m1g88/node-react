@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 //import lodash from 'lodash'
 //import lodash from 'lodash';
 import helmet from 'helmet'
-global.Promise from 'bluebird'
+global.Promise = require('bluebird')
 
 import bodyParser from 'body-parser'
 import parseurl from 'parseurl'
