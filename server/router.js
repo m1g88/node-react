@@ -3,7 +3,7 @@ import express from 'express';
 
 import getLogin from './controller/login/get_login'
 import postLogin from './controller/login/post_login'
-import loginAuth from './utils/login_auth'
+import auth from './utils/auth'
 import apiAuth from './utils/api_auth'
 import getUser from './controller/user/get_user'
 
@@ -42,7 +42,7 @@ router.get('/api/test',apiAuth,(req,res) => {
 	//next()
 })
 
-router.use(loginAuth)
+router.use(auth)
 
 export default router
 //module.exports = router;

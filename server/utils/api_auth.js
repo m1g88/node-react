@@ -5,14 +5,12 @@ export default (req,res,next) => {
 		.get(req.sessionID,(error, session)=>{
 			//console.log('api auth current session is %s' ,req.sessionID );
 			//console.log(session)
-			if (!session) {
-				//console.log('session gone')
-				
+			let userProfiles = req.session.userProfiles
+			if (!userProfiles) {
 				var data = { url : '/login'}
-				res.status(500).json(data)
+				res.status(401).json(data)
 
 			}else{
-				//console.log(next)
 				next()
 			}
 		})
