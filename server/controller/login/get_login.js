@@ -8,12 +8,15 @@ export default (req,res,next) => {
 	    if (!userProfiles) {
 	    	
 	      //console.log('no username')
-	      res.status(200).render('Login.handlebars')
+	      //res.status(200).render('Login.handlebars')
 	    }else{
 	      req.session.destroy( err => {
 	      // cannot access session here
 	      })
+
 	    }
+
+	res.status(200).render('Login.handlebars')
 }
  
 //export default getLogin

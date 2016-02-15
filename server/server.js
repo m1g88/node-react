@@ -16,6 +16,7 @@ import parseurl from 'parseurl'
 // import router from './controller/router'
 import reactRouter from '../app/react-router.jsx'
 
+import router from './router'
 
 
 const app = express()
@@ -65,7 +66,6 @@ app.use('/images', express.static('dist/images'))
 //mount api server routes
 //let router = require('./router.js')
 
-import router from './router'
 app.use('/',router)
 
 // use react routes

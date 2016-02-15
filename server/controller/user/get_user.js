@@ -1,7 +1,7 @@
 /* app.get /User */
 
 export default (req,res,next) => {
-	//console.log('User')
+	//console.log(` userProfiles `)
 	  	let userProfiles = req.session.userProfiles;
 	  	//console.log(userProfiles)
 	  	//console.log(req.sessionID)

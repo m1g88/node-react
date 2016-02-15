@@ -6,6 +6,9 @@ import Navbar from './Navbar.jsx'
 import SideMenu from './SideMenu.jsx'
 import Header from './Header.jsx'
 import Login from './Login/Login.jsx'
+
+import AppStore from '../stores/AppStores'
+import { getUserProfiles } from '../actions/AppActions'
 //import fetch from 'node-fetch'
 //import MainAdmin from './Admin/MainAdmin.jsx'
  
@@ -13,54 +16,50 @@ export default class App extends React.Component {
     
     constructor() {
         super();
-        // this.handleChange = this.handleChange.bind(this);
-        //this.state = { user : props.defaultUser, message: 'Hello!'};
-      
+        
         this.state = { 
-            username : '',
-            msg2 : ''
+            userProfiles : ``
         }
+
+        this._onChange = this._onChange.bind(this)
 
     }
 
-    componentDidMount(){
-        
-        $.ajax({
-            url: 'api/user',
-            contentType: 'application/json',
-            dataType: 'json',
-            type: 'GET',
-            // beforeSend: function(xhr) {
-            //     // Set the CSRF Token in the header for security
-            //     var token = $('meta[name="csrf-token"]').attr('content');
-            //     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
-            // },
-            //data:  JSON.stringify( _.omit(opts, 'method') ),
-            success: function(res, status, xhr){
-                this.setState({ username : res.username })
-                //console.log(xhr.getResponseHeader())
-            }.bind(this)
-        });
 
-        // $.get('/user', function(data) {
-        //     //console.log(data.username)
-        //     this.setState({ username : data.username })
-        // }.bind(this));
+    /**
+    * @listens {AppStore} change event
+    */
+    componentDidMount() {
+        getUserProfiles()
+        AppStore.addChangeListener(this._onChange);
+    }
 
+    /**
+    * clean up event listener
+    */
+    componentWillUnmount() {
+        AppStore.removeChangeListener(this._onChange);
+    }
+
+    _onChange() {
+     this.setState({ userProfiles: AppStore.getAll() });
     }
 
     render() {
 
-       
-        if (this.state.username == '') {
+        // let userProfiles = AppStore.getAll()
+        // console.log( userProfiles )
+
+        if (this.state.userProfiles.username  == '') {
             return(
                 <p> loading . . . . </p>
             )
         } 
-        
+
+        // console.log(`username is ${this.state.username}`)
         return (
         <section id="container">
-        <Header username={this.state.username}/>
+        <Header username={this.state.userProfiles.username} />
         <SideMenu/>
             <section id="main-content">
                 <section className="wrapper">
@@ -73,11 +72,3 @@ export default class App extends React.Component {
    }
   
 }
-
- 
-
- /*<div id="page-wrapper">
-                <div className="container-fluid">
-                {this.props.children}
-                </div>
-            </div>*/
