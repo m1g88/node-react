@@ -4,21 +4,21 @@ import AppDispatcher from '../dispatcher/AppDispatcher'
 import AppConstants from '../constants/AppConstants'
 
 
+const getUser = `api/user`
 
 /**
 * @param  {string} text
 */
 export function getUserProfiles() {
  	//console.log(`app action`)
- 	request.get(`api/user`)
+ 	request.get(getUser)
 	  .end((err, res) => {
-	    if (err) return console.log(err);
+	    if (err) return console.log(`AppActions.js ${err}`)
 	    //console.log(res)
 	    AppDispatcher.dispatch({
 	      type: AppConstants.APP_GET_USERPROFILE,
 	      userProfiles: res.body
 	    });
 	  });
-   
-  }
 
+  }

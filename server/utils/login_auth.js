@@ -1,7 +1,7 @@
 /* auth */
 
 export default (req,res,next) => {
-	
+
 	global.sessionStore
 		.get(req.sessionID,(error, session)=>{
 			//console.log('current session is %s' ,req.sessionID );
@@ -11,10 +11,13 @@ export default (req,res,next) => {
 				next()
 			}else{
 				return res.redirect('/login')
+			// 	res.render("index.handlebars", {
+			// 		 markup: 'Hello, SiamHTML!'
+			//  });
 				//console.log(false)
 			}
 		})
-	
+
 
 
  //   console.log('auth')
