@@ -35,7 +35,11 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 //console.log(app.get('env'))
-/* Set Session */
+
+/**
+* Set Session
+*/
+
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   store: global.sessionStore,

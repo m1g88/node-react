@@ -3,15 +3,16 @@ import React from 'react'
 
 
 export default class SalesSummary extends React.Component {
-	
+
 	constructor(){
 		super()
 	}
 
-	
+
   componentDidMount(){
     if (Morris.EventEmitter) {
             // Use Morris.Area instead of Morris.Line
+
             Morris.Area({
                 element: 'graph-area',
                 padding: 10,
@@ -100,7 +101,7 @@ export default class SalesSummary extends React.Component {
     render() {
 
     	return(
-    		
+
     		<div className="row">
             <div className="col-md-12">
               <section className="panel">

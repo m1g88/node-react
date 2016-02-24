@@ -6,7 +6,7 @@ import postLogin from './controller/login/post_login'
 import auth from './utils/auth'
 import apiAuth from './utils/api_auth'
 import getUser from './controller/user/get_user'
-
+import oAuthLogin from './controller/login/oAuthLogin'
 
 const router = express.Router()
 
@@ -14,7 +14,7 @@ router.get('/login', getLogin)
 router.post('/login', postLogin)
 
 
-
+router.get('/login/googleOAuth',oAuthLogin)
 // router.use('/api/*' , apiAuth)
 
 // app.use(loginAuth)

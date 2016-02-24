@@ -34,5 +34,5 @@ export default (req, res) => {
     	// console.log('key :' + key)
     	req.session.userProfiles = req.body
     	res.redirect('/')
-    })
+  })
 }

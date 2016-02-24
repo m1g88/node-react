@@ -1,5 +1,6 @@
 /* app.get /login */
-import GoogleOAuth from '../../utils/GoogleOAuth'
+//import GoogleOAuth from '../../utils/GoogleOAuth'
+import { getOAuthUrl , url} from '../../utils/GoogleOAuth'
 
 export default (req, res, next) => {
   /**
@@ -8,38 +9,18 @@ export default (req, res, next) => {
 
   let userProfiles = req.session.userProfiles
 
-  new Promise((resolve, reject) => {
-      GoogleOAuth((googleAuthUrl) => {
-        // console.log(`googleAuthUrl is ${googleAuthUrl}`)
-        if (googleAuthUrl) {
-          resolve(googleAuthUrl)
-        }
-      })
-  })
-  .then((googleAuthUrl) => {
-    //console.log(`googleAuthUrl is ${googleAuthUrl}`)
+  if (userProfiles) {
+    req.session.destroy(err => {
+      // cannot access session here
+      console.log(`get_login.js : ${userProfiles} : ${err}`)
+      //console.log(err)
+    })
+  }
 
-    // if (!userProfiles) {
-    //   //console.log('no username')
-    //   //res.status(200).render('Login.handlebars')
-    // } else {
-    //   req.session.destroy(err => {
-    //     // cannot access session here
-    //   })
-    //
-    // }
-
-    if (userProfiles) {
-      req.session.destroy(err => {
-        // cannot access session here
-        console.log(err)
-      })
-    }
-    res.status(200)
-      .render('Login.handlebars' , {
-        googleAuthUrl: googleAuthUrl
-      })
-  })
+  res.status(200)
+    .render('Login.handlebars' , {
+      googleAuthUrl: url
+    })
 }
 
 //export default getLogin

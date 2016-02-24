@@ -27080,6 +27080,7 @@
 	        value: function componentDidMount() {
 	            if (Morris.EventEmitter) {
 	                // Use Morris.Area instead of Morris.Line
+
 	                Morris.Area({
 	                    element: 'graph-area',
 	                    padding: 10,
