@@ -1,17 +1,17 @@
 
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import { EventEmitter } from 'events';
-import AppConstants from '../constants/AppConstants'
+import AppDispatcher from '../dispatcher/AppDispatcher'
+import { EventEmitter } from 'events'
+import HomeConstants from '../constants/HomeConstants'
 
 //var assign = require('object-assign');
 
 const CHANGE_EVENT = 'change';
-let userProfiles = {};
+let source = []
 
 /**
  * AppStore
  */
-class AppStore extends EventEmitter {
+class HomeStore extends EventEmitter {
 
    /**
    * constructor
@@ -20,12 +20,12 @@ class AppStore extends EventEmitter {
     super();
 
     this.dispatchToken = AppDispatcher.register( action => {
-    	//console.log(`AppStore action is ${action.type}`)
+    	//console.log(`HomeStores action is ${action.type}`)
       switch (action.type) {
-        case AppConstants.APP_GET_USERPROFILE :
-          userProfiles = action.userProfiles;
-          //console.log(`app store ${ userProfiles.username }`)
-          this.emitChange();
+        case HomeConstants.HOME_GET_DATASOURCES :
+          // copy array
+          source = action.source.slice()
+          this.emitChange()
           break;
         // case RECEIVE_TRACKS_BY_COUNTRY:
         //   tracks = action.tracks;
@@ -39,6 +39,7 @@ class AppStore extends EventEmitter {
    * @emit change event
    */
   emitChange() {
+    //console.log(`emitChange`)
     this.emit(CHANGE_EVENT);
   }
   /**
@@ -46,7 +47,7 @@ class AppStore extends EventEmitter {
    * @param {function} callback
    */
   addChangeListener(callback) {
-    //console.log(`AppStore ` , callback)
+    //console.log(`changing` , callback)
     this.on(CHANGE_EVENT, callback);
   }
   /**
@@ -61,9 +62,10 @@ class AppStore extends EventEmitter {
    * @return {array} all tracks
    */
   getAll() {
-    return userProfiles;
+    //console.log(`home store get all`)
+    return source
   }
 
 }
 
-export default new AppStore()
+export default new HomeStore()

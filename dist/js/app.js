@@ -24210,11 +24210,11 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _About = __webpack_require__(224);
+	var _About = __webpack_require__(227);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Dashboard = __webpack_require__(225);
+	var _Dashboard = __webpack_require__(228);
 
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 
@@ -24322,6 +24322,7 @@
 	  }, {
 	    key: '_onChange',
 	    value: function _onChange() {
+	      console.log('app _onChange');
 	      this.setState({ userProfiles: _AppStores2.default.getAll() });
 	    }
 	  }, {
@@ -24330,7 +24331,7 @@
 	      // let userProfiles = AppStore.getAll()
 	      // console.log( this.state.userProfiles )
 
-	      if (this.state.userProfiles.username === '') {
+	      if (this.state.userProfiles.email === '') {
 	        var loading = _react2.default.createElement(
 	          'p',
 	          null,
@@ -24343,7 +24344,7 @@
 	      return _react2.default.createElement(
 	        'section',
 	        { id: 'container' },
-	        _react2.default.createElement(_Header2.default, { username: this.state.userProfiles.username }),
+	        _react2.default.createElement(_Header2.default, { email: this.state.userProfiles.email }),
 	        _react2.default.createElement(_SideMenu2.default, null),
 	        _react2.default.createElement(
 	          'section',
@@ -24502,7 +24503,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24522,98 +24523,98 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Header = function (_React$Component) {
-		_inherits(Header, _React$Component);
+	    _inherits(Header, _React$Component);
 
-		function Header() {
-			_classCallCheck(this, Header);
+	    function Header() {
+	        _classCallCheck(this, Header);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
-		}
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
+	    }
 
-		_createClass(Header, [{
-			key: 'render',
-			value: function render() {
+	    _createClass(Header, [{
+	        key: 'render',
+	        value: function render() {
 
-				var username = this.props.username || 'loading . . . ';
+	            var email = this.props.email || 'loading . . . ';
 
-				return _react2.default.createElement(
-					'header',
-					{ className: 'header fixed-top clearfix' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'brand' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/home', className: 'logo' },
-							_react2.default.createElement('img', { src: 'images/logo.png' })
-						),
-						_react2.default.createElement(
-							'small',
-							null,
-							'ADMINISTRATOR'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'top-nav clearfix' },
-						_react2.default.createElement(
-							'ul',
-							{ className: 'nav pull-right top-menu' },
-							_react2.default.createElement(
-								'li',
-								{ className: 'dropdown' },
-								_react2.default.createElement(
-									'a',
-									{ 'data-toggle': 'dropdown', href: '#', className: 'dropdown-toggle' },
-									_react2.default.createElement(
-										'span',
-										{ className: 'username' },
-										username
-									),
-									_react2.default.createElement('b', { className: 'caret' })
-								),
-								_react2.default.createElement(
-									'ul',
-									{ className: 'dropdown-menu extended logout' },
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											_react2.default.createElement('i', { className: 'fa fa-suitcase' }),
-											'Profile'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '#' },
-											_react2.default.createElement('i', { className: 'fa fa-cog' }),
-											' Settings'
-										)
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: '/login' },
-											_react2.default.createElement('i', { className: 'fa fa-key' }),
-											' Log Out'
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
+	            return _react2.default.createElement(
+	                'header',
+	                { className: 'header fixed-top clearfix' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'brand' },
+	                    _react2.default.createElement(
+	                        _reactRouter.Link,
+	                        { to: '/home', className: 'logo' },
+	                        _react2.default.createElement('img', { src: 'images/logo.png' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'small',
+	                        null,
+	                        'ADMINISTRATOR'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'top-nav clearfix' },
+	                    _react2.default.createElement(
+	                        'ul',
+	                        { className: 'nav pull-right top-menu' },
+	                        _react2.default.createElement(
+	                            'li',
+	                            { className: 'dropdown' },
+	                            _react2.default.createElement(
+	                                'a',
+	                                { 'data-toggle': 'dropdown', href: '#', className: 'dropdown-toggle' },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'username' },
+	                                    email
+	                                ),
+	                                _react2.default.createElement('b', { className: 'caret' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'ul',
+	                                { className: 'dropdown-menu extended logout' },
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '#' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-suitcase' }),
+	                                        'Profile'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '#' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-cog' }),
+	                                        ' Settings'
+	                                    )
+	                                ),
+	                                _react2.default.createElement(
+	                                    'li',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '/login' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-key' }),
+	                                        ' Log Out'
+	                                    )
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
 
-		return Header;
+	    return Header;
 	}(_react2.default.Component);
 
 	exports.default = Header;
@@ -24670,7 +24671,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppStore).call(this));
 
 	    _this.dispatchToken = _AppDispatcher2.default.register(function (action) {
-	      //console.log(`this action is ${action.type}`)
+	      //console.log(`AppStore action is ${action.type}`)
 	      switch (action.type) {
 	        case _AppConstants2.default.APP_GET_USERPROFILE:
 	          userProfiles = action.userProfiles;
@@ -24704,6 +24705,7 @@
 	  }, {
 	    key: 'addChangeListener',
 	    value: function addChangeListener(callback) {
+	      //console.log(`AppStore ` , callback)
 	      this.on(CHANGE_EVENT, callback);
 	    }
 	    /**
@@ -25377,7 +25379,8 @@
 
 	exports.default = new _keymirror2.default({
 
-	  APP_GET_USERPROFILE: null
+	  APP_GET_USERPROFILE: null,
+	  HOME_GET_DATASOURCES: null
 
 	});
 
@@ -26881,7 +26884,7 @@
 /* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -26893,6 +26896,12 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _HomeStores = __webpack_require__(224);
+
+	var _HomeStores2 = _interopRequireDefault(_HomeStores);
+
+	var _HomeActions = __webpack_require__(226);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26901,25 +26910,172 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Home = function (_React$Component) {
-	  _inherits(Home, _React$Component);
+	var TebleTest = function (_React$Component) {
+	  _inherits(TebleTest, _React$Component);
+
+	  function TebleTest() {
+	    _classCallCheck(this, TebleTest);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TebleTest).apply(this, arguments));
+	  }
+
+	  _createClass(TebleTest, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var datateble = this.refs.datateble;
+
+	      $(datateble).DataTable({
+	        data: this.props.dataSource
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      //let username = this.props.dataSource || `loading . . . `
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'table',
+	          { ref: 'datateble' },
+	          _react2.default.createElement(
+	            'thead',
+	            null,
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Name'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Position'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Office'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Extn.'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Start date'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Salary'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tfoot',
+	            null,
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Name'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Position'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Office'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Extn.'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Start date'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Salary'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TebleTest;
+	}(_react2.default.Component);
+
+	var Home = function (_React$Component2) {
+	  _inherits(Home, _React$Component2);
 
 	  function Home() {
 	    _classCallCheck(this, Home);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
+
+	    _this2.state = {
+	      dataSource: []
+	    };
+	    _this2._onChange = _this2._onChange.bind(_this2);
+	    return _this2;
 	  }
 
 	  _createClass(Home, [{
-	    key: "render",
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      (0, _HomeActions.getDataSource)();
+	      _HomeStores2.default.addChangeListener(this._onChange);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      _HomeStores2.default.removeChangeListener(this._onChange);
+	    }
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange() {
+
+	      this.setState({
+	        dataSource: _HomeStores2.default.getAll()
+	      });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
+	      var TableTest = '';
+	      var dateSource = this.state.dataSource;
+	      if (dateSource.length <= 0) {
+	        TableTest = 'loading ..';
+	      } else {
+	        TableTest = _react2.default.createElement(TebleTest, { dataSource: this.state.dataSource });
+	      }
+
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "row" },
+	        'div',
+	        { className: 'row' },
+	        TableTest,
 	        _react2.default.createElement(
-	          "h1",
+	          'h1',
 	          null,
-	          " Paynow ! "
+	          ' Paynow ! '
 	        )
 	      );
 	    }
@@ -26932,6 +27088,190 @@
 
 /***/ },
 /* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _AppDispatcher = __webpack_require__(212);
+
+	var _AppDispatcher2 = _interopRequireDefault(_AppDispatcher);
+
+	var _events = __webpack_require__(216);
+
+	var _HomeConstants = __webpack_require__(225);
+
+	var _HomeConstants2 = _interopRequireDefault(_HomeConstants);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//var assign = require('object-assign');
+
+	var CHANGE_EVENT = 'change';
+	var source = [];
+
+	/**
+	 * AppStore
+	 */
+
+	var HomeStore = function (_EventEmitter) {
+	  _inherits(HomeStore, _EventEmitter);
+
+	  /**
+	  * constructor
+	  */
+
+	  function HomeStore() {
+	    _classCallCheck(this, HomeStore);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HomeStore).call(this));
+
+	    _this.dispatchToken = _AppDispatcher2.default.register(function (action) {
+	      //console.log(`HomeStores action is ${action.type}`)
+	      switch (action.type) {
+	        case _HomeConstants2.default.HOME_GET_DATASOURCES:
+	          // copy array
+	          source = action.source.slice();
+	          _this.emitChange();
+	          break;
+	        // case RECEIVE_TRACKS_BY_COUNTRY:
+	        //   tracks = action.tracks;
+	        //   this.emitChange();
+	        //   break;
+	      }
+	    });
+	    return _this;
+	  }
+
+	  /**
+	   * @emit change event
+	   */
+
+
+	  _createClass(HomeStore, [{
+	    key: 'emitChange',
+	    value: function emitChange() {
+	      //console.log(`emitChange`)
+	      this.emit(CHANGE_EVENT);
+	    }
+	    /**
+	     * listen change event
+	     * @param {function} callback
+	     */
+
+	  }, {
+	    key: 'addChangeListener',
+	    value: function addChangeListener(callback) {
+	      //console.log(`changing` , callback)
+	      this.on(CHANGE_EVENT, callback);
+	    }
+	    /**
+	     * remove listened change event
+	     * @param {function} callback
+	     */
+
+	  }, {
+	    key: 'removeChangeListener',
+	    value: function removeChangeListener(callback) {
+	      this.removeListener(CHANGE_EVENT, callback);
+	    }
+	    /**
+	     * return all tracks
+	     * @return {array} all tracks
+	     */
+
+	  }, {
+	    key: 'getAll',
+	    value: function getAll() {
+	      //console.log(`home store get all`)
+	      return source;
+	    }
+	  }]);
+
+	  return HomeStore;
+	}(_events.EventEmitter);
+
+	exports.default = new HomeStore();
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _keymirror = __webpack_require__(218);
+
+	var _keymirror2 = _interopRequireDefault(_keymirror);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = new _keymirror2.default({
+
+	  HOME_GET_DATASOURCES: null
+
+	});
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.getDataSource = getDataSource;
+
+	var _superagent = __webpack_require__(220);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
+
+	var _AppDispatcher = __webpack_require__(212);
+
+	var _AppDispatcher2 = _interopRequireDefault(_AppDispatcher);
+
+	var _HomeConstants = __webpack_require__(225);
+
+	var _HomeConstants2 = _interopRequireDefault(_HomeConstants);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var sourceUrl = 'https://www.datatables.net/examples/ajax/data/arrays.txt?_=1456368826806';
+
+	/**
+	* @param  {string} text
+	*/
+
+	//import { APP_GET_USERPROFILE } from '../constants/TodoConstants'
+	function getDataSource() {
+		//console.log(`Home action`)
+		_superagent2.default.get('api/test').end(function (err, res) {
+			if (err) return console.log('HomeActions.js ' + err);
+			//console.log(`Home`, res.body)
+			_AppDispatcher2.default.dispatch({
+				type: _HomeConstants2.default.HOME_GET_DATASOURCES,
+				source: res.body
+			});
+		});
+	}
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26982,7 +27322,7 @@
 	exports.default = About;
 
 /***/ },
-/* 225 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26999,11 +27339,11 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _SalesSummary = __webpack_require__(226);
+	var _SalesSummary = __webpack_require__(229);
 
 	var _SalesSummary2 = _interopRequireDefault(_SalesSummary);
 
-	var _Summary = __webpack_require__(227);
+	var _Summary = __webpack_require__(230);
 
 	var _Summary2 = _interopRequireDefault(_Summary);
 
@@ -27043,7 +27383,7 @@
 	exports.default = Dashboard;
 
 /***/ },
-/* 226 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27201,7 +27541,7 @@
 	exports.default = SalesSummary;
 
 /***/ },
-/* 227 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

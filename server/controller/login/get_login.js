@@ -12,11 +12,18 @@ export default (req, res, next) => {
   if (userProfiles) {
     req.session.destroy(err => {
       // cannot access session here
-      console.log(`get_login.js : ${userProfiles} : ${err}`)
+      // console.log(`get_login.js : ${userProfiles} : ${err}`)
       //console.log(err)
     })
   }
-
+  // sessionStore.all((error, sessions) => {
+  //   if (error) {
+  //
+  //   } else {
+  //     console.log(`all session ==> `,sessions)
+  //   }
+  // })
+  // console.log(`sessionID : ` , req.sessionID )
   res.status(200)
     .render('Login.handlebars' , {
       googleAuthUrl: url

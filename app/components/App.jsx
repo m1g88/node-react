@@ -37,6 +37,7 @@ export default class App extends React.Component {
     }
 
     _onChange() {
+      console.log(`app _onChange`)
       this.setState({ userProfiles: AppStore.getAll() });
     }
 
@@ -44,7 +45,7 @@ export default class App extends React.Component {
       // let userProfiles = AppStore.getAll()
       // console.log( this.state.userProfiles )
 
-      if (this.state.userProfiles.username === '') {
+      if (this.state.userProfiles.email === '') {
         const loading = <p>loading . . . . </p>;
         return loading;
       }
@@ -52,7 +53,7 @@ export default class App extends React.Component {
         // console.log(`username is ${this.state.username}`)
       return (
         <section id="container">
-        <Header username={this.state.userProfiles.username} />
+        <Header email={this.state.userProfiles.email} />
         <SideMenu/>
             <section id="main-content">
                 <section className="wrapper">
@@ -61,7 +62,7 @@ export default class App extends React.Component {
             </section>
         </section>
 
-      );
+      )
     }
 
 }
