@@ -59,11 +59,11 @@ app.use(session({
 
 
 /* Set static root folder */
-app.use(express.static('dist'))
+app.use(express.static('static'))
   // Set static sub folder
 
-app.use('/fonts', express.static('dist/fonts'))
-app.use('/images', express.static('dist/images'))
+app.use('/fonts', express.static('static/fonts'))
+app.use('/images', express.static('static/images'))
 
 
 //mount api server routes

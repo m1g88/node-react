@@ -11,7 +11,7 @@ export default (req, res) => {
 			}
   	})
   })
-  .then(sessions => {
+  .then((sessions) => {
     //console.log(`post login`,sessions)
   	/**
     * find Duplicate Session
@@ -22,11 +22,13 @@ export default (req, res) => {
                 o.userProfiles.email == objBody.email
 	              })
 	})
-	.then((key)=>{
+	.then((key) => {
 	   // Duplicate Key
+    //console.log(`Dup key : ${key}`)
 		if (key){
       sessionStore.destroy(key , (error) => {
 				// log error here
+        console.log(`post_login.js => ` , error)
 			})
     }
 

@@ -5,7 +5,7 @@ import HomeConstants from '../constants/HomeConstants'
 
 //var assign = require('object-assign');
 
-const CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change'
 let source = []
 
 /**

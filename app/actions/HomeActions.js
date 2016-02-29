@@ -4,14 +4,14 @@ import AppDispatcher from '../dispatcher/AppDispatcher'
 import HomeConstants from '../constants/HomeConstants'
 
 
-const sourceUrl = `https://www.datatables.net/examples/ajax/data/arrays.txt?_=1456368826806`
+const sourceUrl = `api/test`
 
 /**
 * @param  {string} text
 */
 export function getDataSource() {
  	//console.log(`Home action`)
- 	request.get(`api/test`)
+ 	request.get(sourceUrl)
 	  .end((err, res) => {
 	    if (err) return console.log(`HomeActions.js ${err}`)
 	    //console.log(`Home`, res.body)
