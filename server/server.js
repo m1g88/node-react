@@ -65,7 +65,6 @@ app.use(express.static('static'))
 app.use('/fonts', express.static('static/fonts'))
 app.use('/images', express.static('static/images'))
 
-
 //mount api server routes
 //let router = require('./router.js')
 
