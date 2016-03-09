@@ -1,9 +1,9 @@
 
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import { EventEmitter } from 'events'
-import HomeConstants from '../constants/HomeConstants'
+import AppConstants from '../constants/AppConstants'
 
-//var assign = require('object-assign')
+//var assign = require('object-assign');
 
 const CHANGE_EVENT = 'change'
 let source = []
@@ -11,25 +11,26 @@ let source = []
 /**
  * AppStore
  */
-class HomeStore extends EventEmitter {
+class TransactionStore extends EventEmitter {
 
    /**
    * constructor
    */
   constructor() {
     super()
+
     this.dispatchToken = AppDispatcher.register( action => {
     	//console.log(`HomeStores action is ${action.type}`)
       switch (action.type) {
-        case HomeConstants.HOME_GET_DATASOURCES :
+        case AppConstants.TRANSACTION_GET_TRANSACTION_BETWEEN_DATE :
           // copy array
           source = action.source.slice()
           this.emitChange()
           break
         // case RECEIVE_TRACKS_BY_COUNTRY:
-        //   tracks = action.tracks
-        //   this.emitChange()
-        //   break
+        //   tracks = action.tracks;
+        //   this.emitChange();
+        //   break;
       }
     })
   }

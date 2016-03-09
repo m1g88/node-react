@@ -1,34 +1,33 @@
 import {
   getUserInfoFromAuthCode
 } from '../../models/GoogleOAuth'
+
+import {
+  checkDuplicateLoginByEmail,
+  validateAuthorizationCode,
+  validateUserInfo,
+  destroySession,
+
+} from '../../models/loginModel'
 import Joi from 'joi'
-
-const userObjSchema = Joi.object().keys({
-  id: Joi.string().alphanum(),
-  email: Joi.string().email(),
-  name: Joi.string().max(50),
-  picture: Joi.string(),
-  gender: Joi.string(),
-  hd: Joi.string()
-})
-
-const authorizationCodeSchema = Joi.string().max(50)
-let _userInfo
+import is from 'is_js'
 
 export default (req, res, next) => {
 
   let authorizationCode = req.query.code
+  console.log(`authorizationCode : ${authorizationCode}`)
 
   let response = {
-    success: function() {
+    success: function(userInfo) {
+      //console.log(`asdasd`,userInfo)
       req.session.regenerate((err) => {
         // will have a new session here
         if (err) {
           console.error(`[ regenerateSession ]`, err)
         } else {
           //console.error(`[ Regenerated ]`)
-          req.session.userProfiles = _userInfo
-          res.redirect('/')
+          req.session.userProfiles = userInfo
+          res.status(200).redirect('/')
         }
       })
     },
@@ -44,80 +43,6 @@ export default (req, res, next) => {
     .then(checkDuplicateLoginByEmail)
     .then(destroySession)
     .then(response.success)
-    .catch(e => response.error(e))
+    .catch(response.error)
 
-}
-
-/**
- * Get Session form session Stored
- * @param { object } objUserInfo
- * @return { promise }
- */
-function checkDuplicateLoginByEmail(objUserInfo) {
-  return new Promise((resolve, reject) => {
-    sessionStore.all((error, sessions) => {
-      if (error) {
-        console.error(`[ CheckDuplicateLoginByEmail ]`, error)
-        reject(error)
-      } else {
-        resolve(_.findKey(sessions, (o) => {
-          return !_.isEmpty(o.userProfiles) &&
-            !_.isEmpty(o.userProfiles.email) &&
-            o.userProfiles.email == objUserInfo.email
-        }))
-      }
-    })
-  })
-}
-
-/**
- * Validate Authorize Code
- * @param { string } authorizationCode
- * @return { promise }
- */
-function validateAuthorizationCode(authorizationCode) {
-  return new Promise((resolve, reject) => {
-    Joi.validate(authorizationCode, authorizationCodeSchema, (err, value) =>
-      err ? reject(err) : resolve(value))
-  })
-}
-
-/**
- * Validate User Object
- * @param { object } objUserInfo
- * @return { promise }
- */
-function validateUserInfo(objUserInfo) {
-  return new Promise((resolve, reject) => {
-    Joi.validate(objUserInfo, userObjSchema, (err, value) => {
-      if (err) {
-        console.error(`[ Error ValidateUserInfo ] : ${err}`)
-        reject(err)
-      } else {
-        //console.error(`[ ValidateUserInfo ] : ` , value)
-        _userInfo = value
-        resolve(value)
-      }
-    })
-  })
-}
-
-/**
- * DestroySession Session by UUID
- * @param { string } SessionID
- * @return { promise }
- */
-function destroySession(SessionID) {
-  return new Promise((resolve, reject) => {
-    let key = SessionID
-    if (key) {
-      sessionStore.destroy(key, (error) => {
-        // error error here
-        console.error(`[Error DestroySession : ${error}]`)
-        reject(error)
-      })
-    }
-    console.log(`[ DestroySession => ID : ${key}]`)
-    resolve(true)
-  })
 }

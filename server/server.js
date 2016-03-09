@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-app.use(cookieParser());
+app.use(cookieParser())
 //console.log(app.get('env'))
 
 /**
@@ -60,10 +60,11 @@ app.use(session({
 
 /* Set static root folder */
 app.use(express.static('static'))
-  // Set static sub folder
-
+// Set static sub folder
+app.use('/modules' , express.static(appRoot + '/node_modules'))
 app.use('/fonts', express.static('static/fonts'))
 app.use('/images', express.static('static/images'))
+app.use('/bootstrap', express.static('static/bootstrap'))
 
 //mount api server routes
 //let router = require('./router.js')
@@ -71,9 +72,9 @@ app.use('/images', express.static('static/images'))
 app.use('/', router)
 
 // use react routes
-app.use(reactRouter);
+app.use(reactRouter)
 
 // start server with port 3333
 app.listen(3333, () => {
-  console.log('listening at http://localhost:3333');
-});
+  console.log('listening at http://localhost:3333')
+})

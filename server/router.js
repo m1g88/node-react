@@ -3,10 +3,10 @@ import express from 'express'
 
 import getLogin from './controller/login/get_login'
 import postLogin from './controller/login/post_login'
-import auth from './utils/auth'
-import apiAuth from './utils/api_auth'
 import getUser from './controller/user/get_user'
 import oAuthLogin from './controller/login/oAuthLogin'
+import auth from './utils/auth'
+import apiAuth from './utils/api_auth'
 
 const router = express.Router()
 

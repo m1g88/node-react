@@ -6,20 +6,20 @@ import Header from '../Header.jsx'
 
 export default class MainAdmin extends React.Component {
 
-	  render() {
+  render() {
 
-        return (
-        <section id="container">
+    return (
+      <section id="container">
         <Header username={this.props.username}/>
         <SideMenu/>
-            <section id="main-content">
-                <section className="wrapper">
-                    {this.props.children}
-                </section>
-            </section>
+        <section id="main-content">
+          <section className="wrapper">
+            {this.props.children}
+          </section>
         </section>
-        
-        )
-   }
+      </section>
+
+    )
+  }
 
 }

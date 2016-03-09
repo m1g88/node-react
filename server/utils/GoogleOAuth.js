@@ -41,6 +41,26 @@ export function getUserInfoFromAuthCode(authorizationCode){
 }
 
 
+/**
+ *  Google auth url
+ * @param { object } credentials
+ * @return { promise }
+ */
+function oAuthGetToken (authorizationCode) {
+  return new Promise ((resolve,reject) => {
+    oauth2Client.getToken(authorizationCode, (err, token) => {
+      if (err) {
+        console.log('Error while trying to retrieve access token', err);
+        reject(err)
+      } else {
+        console.log(`[ oAuthGetToken Success ]`)
+        resolve(token)
+      }
+    })
+  })
+}
+
+
 function getUserInfo (token) {
 
   // if you need to use plus 'let plus = google.plus('v1')'
@@ -65,24 +85,6 @@ function getUserInfo (token) {
 
 }
 
-/**
- *  Google auth url
- * @param { object } credentials
- * @return { promise }
- */
-function oAuthGetToken (authorizationCode) {
-  return new Promise ((resolve,reject) => {
-    oauth2Client.getToken(authorizationCode, (err, token) => {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        reject(err)
-      } else {
-        console.log(`[ oAuthGetToken Success ]`)
-        resolve(token)
-      }
-    })
-  })
-}
 
 /**
  * Generate Google auth url

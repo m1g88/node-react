@@ -9,14 +9,17 @@ const getUser = 'api/user'
 /**
 * @param  {string} text
 */
-export function getUserProfiles() {
+export function getUserProfiles(postData) {
  	//console.log(`app action`)
-  request.get(getUser).end((err, res) => {
+  request
+  .post(getUser)
+  .send(postData)
+  .end((err, res) => {
     if (err) return console.log(`AppActions.js ${err}`)
     //console.log(res)
     AppDispatcher.dispatch({
-      type: AppConstants.APP_GET_USERPROFILE,
-      userProfiles: res.body
+      type: AppConstants.TRANSACTION_GET_TRANSACTION_BETWEEN_DATE,
+      data: res.body
     })
   })
 

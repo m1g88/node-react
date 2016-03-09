@@ -9,7 +9,7 @@ module.exports = {
          }
         ],
         "quotes": [
-            2,
+            1,
             "single"
         ],
         "linebreak-style": [
@@ -20,7 +20,8 @@ module.exports = {
             2,
             "never"
         ],
-        "no-console": 0
+        "no-console": 0,
+        "no-restricted-imports": 0,
     },
     "env": {
         "es6": true,
@@ -29,9 +30,13 @@ module.exports = {
         // "mocha": true
     },
     //"extends": "eslint:recommended",
-    "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread": true
-    },
-    "sourceType": "module"
+    "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true,
+          "experimentalObjectRestSpread": true,
+          "modules":true
+      },
+      "sourceType": "module"
+    }
+
 };
