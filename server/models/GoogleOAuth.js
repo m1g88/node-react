@@ -13,14 +13,14 @@ export let url = ``
 const secret = `${appRoot}/config/client_secret.json`
 
 fs.readFile(secret, (err, content) => {
-   if (err) {
-     console.log('Error loading client secret file: ' + err)
-     return
-   }
-   // Authorize a client with the loaded credentials, then call the
-   // Reports API.
-   url = getGoogleAuthUrl(JSON.parse(content))
- })
+  if (err) {
+    console.log('Error loading client secret file: ' + err)
+    return
+  }
+  // Authorize a client with the loaded credentials, then call the
+  // Reports API.
+  url = getGoogleAuthUrl(JSON.parse(content))
+})
 
 /**
 * @param  {string} params.query.code
@@ -29,14 +29,14 @@ fs.readFile(secret, (err, content) => {
 export function getUserInfoFromAuthCode(authorizationCode){
   //console.log(`code : ${code}`)
 
- return new Promise ((resolve, reject) => {
-   oAuthGetToken(authorizationCode)
-   .then(getUserInfo)
-   .then(objUserInfo => resolve(objUserInfo))
-   .catch((e) => {
-       console.log(`Handle rejected promise ('${e}') here.`)
-       reject(e)
-   })
+  return new Promise ((resolve, reject) => {
+    oAuthGetToken(authorizationCode)
+    .then(getUserInfo)
+    .then(objUserInfo => resolve(objUserInfo))
+    .catch((e) => {
+      console.log(`Handle rejected promise ('${e}') here.`)
+      reject(e)
+    })
   })
 }
 
@@ -49,18 +49,18 @@ function getUserInfo (token) {
 
 
   return new Promise ((resolve, reject) => {
-      oauth2Client.credentials = token
-      oauth2.userinfo.get(
-        { auth: oauth2Client, fields: fieldsConfig} ,(err, response) => {
-          if (err) {
-            console.log(`[getUserInfo : ${err}]`)
-            reject(err)
-          } else {
-            console.log(`[ getUserInfo Success ]`)
-            resolve(response)
-          }
+    oauth2Client.credentials = token
+    oauth2.userinfo.get(
+      { auth: oauth2Client, fields: fieldsConfig} ,(err, response) => {
+        if (err) {
+          console.log(`[getUserInfo : ${err}]`)
+          reject(err)
+        } else {
+          console.log(`[ getUserInfo Success ]`)
+          resolve(response)
         }
-      )
+      }
+    )
   })
 
 }
@@ -74,7 +74,7 @@ function oAuthGetToken (authorizationCode) {
   return new Promise ((resolve,reject) => {
     oauth2Client.getToken(authorizationCode, (err, token) => {
       if (err) {
-        console.log('Error while trying to retrieve access token', err);
+        console.log('Error while trying to retrieve access token', err)
         reject(err)
       } else {
         console.log(`[ oAuthGetToken Success ]`)
@@ -98,8 +98,8 @@ function getGoogleAuthUrl (credentials) {
   oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl)
 
   let url = oauth2Client.generateAuthUrl({
-      access_type: 'offline', // 'online' (default) or 'offline' (gets refresh_token)
-      scope: scopes // If you only need one scope you can pass it as string
+    access_type: 'offline', // 'online' (default) or 'offline' (gets refresh_token)
+    scope: scopes // If you only need one scope you can pass it as string
   })
 
   //console.log(`googleAuthUrl : ${url}`)

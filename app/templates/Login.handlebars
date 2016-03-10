@@ -18,18 +18,20 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
   <body class="login-body">
     <section id="container">
       <div class="container">
         <div class="brand"><a href="index.html" class="logo"><img src="images/logo.png"></a>
           <div class="btn-group pull-right"><a href="#" class="btn active">TH</a><a href="#" class="btn">EN</a></div>
         </div>
-        <form action="/login" method="post" class="form-signin">
+        <form id="loginForm" onsubmit="login(event,this)" class="form-signin">
           <h2 class="form-signin-heading">ระบบจัดการธุรการสำหรับร้านค้า</h2>
           <div class="login-wrap">
             <div class="user-login-info">
               <input type="text" placeholder="ชื่อผู้ใช้" autofocus="" name="email" class="form-control" value="mic@paysbuy.com">
               <input type="password" placeholder="รหัสผ่าน" name="password" class="form-control" value="1234">
+
               <div class="text-right"><a data-toggle="modal" href="#myModal"><small>ลืมรหัสผ่าน?</small></a></div>
             </div>
             <button type="submit" class="btn btn-lg btn-login btn-block">เข้าสู่ระบบ</button>
@@ -64,3 +66,25 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+  // $(function () {
+  //
+  //     var $form = $('#loginForm');
+  // })
+
+  function login(e){
+    e.preventDefault()
+    console.log($('#loginForm').serialize())
+    $.ajax({
+      method: "POST",
+      url: "/login",
+      data: $('#loginForm').serialize()
+    }).done(function(res) {
+      //location.reload()
+      window.location.href = window.location.href.toString().split(window.location.host)[0] + window.location.host //'http://localhost:3333/'
+      //$( this ).addClass( "done" );
+    }).error(function(error) {
+      alert(error)
+    })
+  }
+</script>

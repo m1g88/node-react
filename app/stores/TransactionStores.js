@@ -68,4 +68,4 @@ class TransactionStore extends EventEmitter {
 
 }
 
-export default new HomeStore()
+export default new TransactionStore()

@@ -9,7 +9,8 @@ import {
   Button
 } from 'react-bootstrap'
 import DatePicker from '../DatePicker.jsx'
-import TransactionStore from '../stores/TransactionStores'
+import TransactionTable from './TransactionTable.jsx'
+import TransactionStore from '../../stores/TransactionStores'
 
 export default class Transaction extends React.Component {
 
@@ -47,84 +48,57 @@ export default class Transaction extends React.Component {
     let { dateFrom , dateTo } = this.state
 
     let form =  e.target // this.refs['submitForm'];
-    let formStr ={ dateFrom ,  dateTo}
+    let formStr = {dateFrom ,dateTo}
     console.log('im serach',formStr )
   }
 
   render() {
     const panelHeader = 'Sreach'
     return (
-      <section className="panel">
-        <header className="panel-heading">
-          {panelHeader}
-          <span className="tools pull-right"><a href="javascript:;" className="fa fa-chevron-up"></a></span>
-        </header>
-        <div className="panel-body">
-          <form onSubmit={this.handleSubmit} >
-            <div className="row">
-              <div className="col-md-3">
-                  <span className="help-block">From:</span>
-              </div>
-              <div className="col-md-3">
-                <span className="help-block">To:</span>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <div className="form-group">
-                    <DatePicker
-                      date={this.state.dateFrom}
-                      onchange={this.dateFromHandleChange}/>
+      <div className="row">
+        <div className="col-xs-12">
+          <section className="panel">
+            <header className="panel-heading">
+              {panelHeader}
+              <span className="tools pull-right">
+                <a href="javascript:;" className="fa fa-chevron-up"></a>
+              </span>
+            </header>
+            <div className="panel-body">
+              <form onSubmit={this.handleSubmit} >
+                <div className="row">
+                  <div className="col-md-3">
+                      <span className="help-block">From:</span>
+                  </div>
+                  <div className="col-md-3">
+                    <span className="help-block">To:</span>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-3">
-                <div>
-                    <DatePicker
-                      date={this.state.dateTo}
-                      onchange={this.dateToHandleChange}/>
+                <div className="row">
+                  <div className="col-md-3">
+                    <div className="form-group">
+                        <DatePicker
+                          date={this.state.dateFrom}
+                          onchange={this.dateFromHandleChange}/>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div>
+                        <DatePicker
+                          date={this.state.dateTo}
+                          onchange={this.dateToHandleChange}/>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <button className="btn btn-default btn-sm" type="submit">Search</button>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-3">
-                <button className="btn btn-default btn-sm" type="submit">Search</button>
-              </div>
+              </form>
             </div>
-          </form>
+          </section>
+          <TransactionTable />
         </div>
-      </section>
+      </div>
     )
   }
-
-  // render() {
-  //   const panelHeader = 'Sreach'
-  //
-  //   return(
-  //     <Col xs={12}>
-  //       <Panel header={panelHeader}>
-  //         <Row>
-  //           <Col xs={3}>
-  //             <
-  //           </Col>
-  //           <Col xs={3}>
-  //             <DatePicker
-  //               date={this.state.dateTo}
-  //               onchange={this.dateToHandleChange}/>
-  //           </Col>
-  //         </Row>
-  //         <Row>
-  //           <Col xs={3}>
-  //             <DatePicker
-  //               date={this.state.dateFrom}
-  //               onchange={this.dateFromHandleChange}/>
-  //           </Col>
-  //           <Col xs={3}>
-  //             <DatePicker
-  //               date={this.state.dateTo}
-  //               onchange={this.dateToHandleChange}/>
-  //           </Col>
-  //         </Row>
-  //       </Panel>
-  //
-  //     </Col>
-  //   )
-  // }
 }

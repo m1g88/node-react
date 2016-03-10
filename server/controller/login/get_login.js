@@ -6,13 +6,12 @@ export default (req, res, next) => {
   /**
    * req.session provire by express-session
    */
-
   let userProfiles = req.session.userProfiles
 
   if (userProfiles) {
     // destroy this session
     req.session.destroy(err => {
-      console.error(`Error destroy session : ${req.session.userProfiles.email}`)
+      console.error('Error destroy session :' , err)
     })
   }
   res.status(200)

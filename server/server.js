@@ -3,9 +3,7 @@ import express from 'express'
 import exphbs from 'express-handlebars'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
-//import favicon from 'serve-favicon';
-//import lodash from 'lodash'
-//import lodash from 'lodash';
+import fs from 'fs'
 import helmet from 'helmet'
 //global.Promise = require('bluebird')
 
@@ -18,14 +16,41 @@ import reactRouter from '../app/react-router.jsx'
 
 import router from './router'
 
+// if (process.env.develop) {
+//
+// }
+//import config from './config/dev_conf.js'
+
+
+
 const app = express()
 global._ = require('lodash')
 global.sessionStore = new session.MemoryStore()
+
+global.appConfig
+
   //app.use(favicon(path.join(__dirname, '../../public/images/favicon.ico')));
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, '../app/templates'))
 
+// app.use(function(req,res,next){
+//   new Promise ((resolve,reject) => {
+//     fs.readFile(configPath, (err, content) => {
+//       if (err) {
+//         console.log('Error loading client secret file: ' + err)
+//         reject(err)
+//         //return
+//       }
+//       resolve(JSON.parse(content))
+//     })
+//   })
+//   .then(res => {
+//     global.appConfig = res
+//     console.log('appConfig' , appConfig)
+//   })
+//
+// })
 app.use(helmet())
   /* Body Parser */
 app.use(bodyParser.json())

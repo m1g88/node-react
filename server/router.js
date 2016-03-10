@@ -5,6 +5,8 @@ import getLogin from './controller/login/get_login'
 import postLogin from './controller/login/post_login'
 import getUser from './controller/user/get_user'
 import oAuthLogin from './controller/login/oAuthLogin'
+import getTransaction from './controller/transaction/get.transaction_by_date'
+
 import auth from './utils/auth'
 import apiAuth from './utils/api_auth'
 
@@ -19,6 +21,8 @@ router.get('/login/googleOAuth',oAuthLogin)
 
 // app.use(loginAuth)
 router.get('/api/user', apiAuth, getUser)
+
+router.get('/api/TransactionByDate', apiAuth, getTransaction)
 
 /**
 * Example API Middelware
