@@ -11,13 +11,21 @@ export default (req, res, next) => {
   if (userProfiles) {
     // destroy this session
     req.session.destroy(err => {
-      console.error('Error destroy session :' , err)
+
+      if (err) {
+        console.error('Error destroy session :' , err)
+      }
+
+      res.status(205).render('Login.handlebars', {
+        googleAuthUrl: url
+      })
     })
-  }
-  res.status(200)
-    .render('Login.handlebars', {
+  } else {
+    res.status(200).render('Login.handlebars', {
       googleAuthUrl: url
     })
+  }
+
 }
 
 //export default getLogin

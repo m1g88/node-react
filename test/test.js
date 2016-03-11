@@ -1,35 +1,26 @@
 var assert = require('assert')
 var expect = require('chai').expect
+var supertest = require('supertest')
+var app = require('../app').app
+//import superagent from 'supertest'
+//global.request = supertest.agent(app)
+// import {
+//   checkDuplicateLoginByEmail,
+//   validateAuthorizationCode,
+//   validateUserInfo,
+//   destroySession,
+//
+// } from '../server/models/loginModel'
 
-import {
-  checkDuplicateLoginByEmail,
-  validateAuthorizationCode,
-  validateUserInfo,
-  destroySession,
 
-} from '../server/models/loginModel'
-
-
-
-describe('Array', function() {
-  describe('#indexOf()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal(-1, [1,2,3].indexOf(5))
-      assert.equal(-1, [1,2,3].indexOf(0))
-    })
-    it('should return an array', function(){
-      assert(Array.isArray('a,b,c'.split(',')))
-    })
-  })
+before(function(done) {
+  global.request = supertest.agent(app)
+   // runs before all tests in this block
+  // global.request = supertest.agent(app.app)
+  done()
 })
 
-
-describe('LoginModel', () => {
-  const authorizationCode = '4/gfgvtXiphUCZj47HS4Nx-RW3QtSre9YrKIlMTaktLSA'
-  let code = validateAuthorizationCode(authorizationCode)
-  describe('oAuthLogin', ()=> {
-    it('should rerture validateAuthorizationCode' , function (){
-        expect(code).to.equal(authorizationCode)
-    })
-  })
+after(function(done){
+  //console.log('after')
+  done()
 })

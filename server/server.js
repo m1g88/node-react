@@ -23,7 +23,7 @@ import router from './router'
 
 
 
-const app = express()
+export const app = express()
 global._ = require('lodash')
 global.sessionStore = new session.MemoryStore()
 

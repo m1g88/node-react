@@ -8,7 +8,7 @@ export default (req,res,next) => {
 	// easy way to copy object
   let userProfiles = JSON.parse(JSON.stringify(req.session.userProfiles))
   delete userProfiles['token']
-  console.log(userProfiles)
+  //console.log(userProfiles)
 	//console.log(req.sessionID)
   if (!userProfiles || userProfiles == '') {
 	//console.log('no username')

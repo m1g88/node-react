@@ -4,7 +4,7 @@
   "description": "Paysbuy Merchants Admin",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register -w",
+    "test": "mocha --recursive --compilers js:babel-register ",
     "start": "webpack && node app.js"
   },
   "keywords": [

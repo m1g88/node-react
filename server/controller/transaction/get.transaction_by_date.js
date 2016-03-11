@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const url = `${config.paynow_url}:${config.port}/paynow/1/auth`
+//const url = `${config.paynow_url}:${config.port}/paynow/1/auth`
 
 export default (req, res, next) => {
   /**

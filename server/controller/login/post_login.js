@@ -6,20 +6,20 @@ const url = `${config.paynow_url}:${config.port}/paynow/1/auth`
 
 export default (req, res) => {
 
-  console.log('url' , url)
+  // console.log('url' , url)
   let xToken
   let objBody = req.body
-  // let postData = {
-  //   email : objBody.email,
-  //   password : objBody.password
-  // }
-
   let postData = {
-    email : config.admin_email,
-    password : config.admin_password
+    email : objBody.email,
+    password : objBody.password
   }
 
-  console.log('postdata', postData)
+  // let postData = {
+  //   email : config.admin_email,
+  //   password : config.admin_password
+  // }
+
+  // console.log('postdata', postData)
 
   new Promise((resolve,reject) => {
     try {
