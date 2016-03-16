@@ -1,51 +1,41 @@
 import request from 'superagent'
-import path from 'path'
 import config from '../../../config/dev_conf'
+import joi from 'joi'
+import {
+  RequestMethod,
+  callRequest,
+  responseSuccess,
+  responseError
+  } from '../../libs/helper'
 
 const url = `${config.paynow_url}:${config.port}/paynow/1/auth`
 
 export default (req, res) => {
-
   // console.log('url' , url)
   let xToken
-  let objBody = req.body
+  //let objBody = req.body
   let postData = {
-    email : objBody.email,
-    password : objBody.password
+    email : req.body.email,
+    password : req.body.password
   }
 
-  // let postData = {
-  //   email : config.admin_email,
-  //   password : config.admin_password
-  // }
-
-  // console.log('postdata', postData)
+  let schema = joi.object().keys({
+    email : joi.string().email(),
+    password : joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+  })
 
   new Promise((resolve,reject) => {
-    try {
-      request
-         .post(url)
-         .set('Content-Type', 'application/json')
-         .send(postData)
-         .end(function(err, res){
-           if (err && err.status === 404) {
-             reject([err.status,res.body.message])
-           }
-           else if (err) {
-             reject([err.status,res.error])
-           }
-           //console.log(res)
-           resolve(res.body)
-         })
-    } catch (e) {
-      resolve(e)
-    }
+    joi.validate(postData, schema, function (err, value) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(value)
+      }
+    })
   })
-  // .then((res) => {
-  //   console.log(res)
-  // })
-  .then((res)=>{
-    xToken = res.token
+  .then(value => callRequest(url,value,RequestMethod.POST))
+  .then(data => {
+    xToken = data.token
     return new Promise((resolve, reject) => {
       sessionStore.all((error, sessions) => {
         if (error) {
@@ -57,39 +47,26 @@ export default (req, res) => {
 
     })
   })
-  .then((sessions) => {
-    //console.log(`post login`,sessions)
-  	/**
-    * find Duplicate Session
-    */
+  .then(sessions => {
     return _.findKey(sessions, (o) => {
       return !_.isEmpty(o.userProfiles) &&
               !_.isEmpty(o.userProfiles.email) &&
                 o.userProfiles.email == postData.email
     })
   })
-  .then((key) => {
-    if (key){
-      sessionStore.destroy(key , (error) => {
-        if (error) {
-          console.log(`post_login.js => ` , error)
-        }
-      })
-    }
+  .then(() => {
     req.session.regenerate(function(err) {
       if (err) {
         console.log(`post_login.js` , err)
       }
-    //console.log(` session ID : `,req.sessionID)
       req.session.userProfiles = { email : postData.email , token : xToken}
-      //res.redirect('/')
-      res.status(200)
-      res.json('asdsd')
+      responseSuccess(req,res,[200])
     })
   })
   .catch((e) => {
-    res.status(400)
-    res.json('User or password is not valid')
+    responseError(req,res,[400,'User or password is not valid'])
+    // res.status(400)
+    // res.json('User or password is not valid')
     //console.error(e)
   })
 }

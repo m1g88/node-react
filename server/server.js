@@ -27,9 +27,9 @@ export const app = express()
 global._ = require('lodash')
 global.sessionStore = new session.MemoryStore()
 
-global.appConfig
+//global.appConfig
 
-  //app.use(favicon(path.join(__dirname, '../../public/images/favicon.ico')));
+//app.use(favicon(path.join(__dirname, '../../public/images/favicon.ico')));
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, '../app/templates'))
@@ -57,9 +57,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-
 app.use(cookieParser())
-//console.log(app.get('env'))
 
 /**
 * Set Session
@@ -82,7 +80,6 @@ app.use(session({
   rolling: true
 }))
 
-
 /* Set static root folder */
 app.use(express.static('static'))
 // Set static sub folder
@@ -90,13 +87,7 @@ app.use('/modules' , express.static(appRoot + '/node_modules'))
 app.use('/fonts', express.static('static/fonts'))
 app.use('/images', express.static('static/images'))
 app.use('/bootstrap', express.static('static/bootstrap'))
-
-//mount api server routes
-//let router = require('./router.js')
-
 app.use('/', router)
-
-// use react routes
 app.use(reactRouter)
 
 // start server with port 3333

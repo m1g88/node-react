@@ -1,6 +1,9 @@
-import {
-  url
-} from '../../models/GoogleOAuth'
+//import { rootpath } from 'rootpath'
+require('rootpath')()
+let url = require('server/models/GoogleOAuth').url
+// import {
+//   url
+// } from 'server/models/GoogleOAuth'
 
 export default (req, res, next) => {
   /**

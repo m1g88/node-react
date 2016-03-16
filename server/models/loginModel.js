@@ -15,7 +15,7 @@ const authorizationCodeSchema = Joi.string().max(50)
 /**
  * Get Session form session Stored
  * @param { object } objUserInfo
- * @return { promise }
+ * @return { promise } Array
  */
 export function checkDuplicateLoginByEmail(objUserInfo) {
   return new Promise((resolve, reject) => {
@@ -27,15 +27,15 @@ export function checkDuplicateLoginByEmail(objUserInfo) {
       }
 
       //if (sessions) {
-        duplicateSessionID = _.findKey(sessions, (o) => {
-          return !_.isEmpty(o.userProfiles) &&
-            !_.isEmpty(o.userProfiles.email) &&
-            o.userProfiles.email == objUserInfo.email
-        })
+      duplicateSessionID = _.findKey(sessions, (o) => {
+        return !_.isEmpty(o.userProfiles) &&
+          !_.isEmpty(o.userProfiles.email) &&
+          o.userProfiles.email == objUserInfo.email
+      })
         //console.log(`duplicateSessionID` , duplicateSessionID)
         //duplicateSessionID ? resolve(duplicateSessionID) : resolve(objUserInfo)
 
-        resolve([duplicateSessionID,objUserInfo])
+      resolve([duplicateSessionID,objUserInfo])
     })
   })
 }
