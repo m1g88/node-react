@@ -4,11 +4,15 @@ import {
   RequestMethod,
   callRequest,
   responseSuccess,
-  responseError
+  responseError,
+  datetimeQueryString
   } from '../../libs/helper'
+
+import { DateTimeFormat } from '../../libs/const'
+import moment from 'moment'
 import joi from 'joi'
 
-const url = `${config.paynow_url}:${config.port}/paynow/1/auth`
+const url = `${config.paynow_url}:${config.port}/paynow/1/auth/transaction?date=`
 
 export default (req, res, next) => {
 
@@ -19,8 +23,8 @@ export default (req, res, next) => {
   }
 
   let schema = joi.object().keys({
-    dateFrom : joi.date().format('YYYYMMDD'),
-    dateTo : joi.date().format('YYYYMMDD')
+    dateFrom : joi.date().format(DateTimeFormat.YYYYMMDD),
+    dateTo : joi.date().format(DateTimeFormat.YYYYMMDD)
   })
 
   new Promise((resolve,reject) => {
@@ -32,9 +36,7 @@ export default (req, res, next) => {
       }
     })
   })
-  .then((value) => {
-
-  })
+  .then((value) => callRequest())
 
 
 }

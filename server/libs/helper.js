@@ -1,6 +1,7 @@
 import request from 'superagent'
 import morgan from 'morgan'
 import moment from 'moment'
+
 export const RequestMethod = {
   GET : 0,
   POST : 1,
@@ -8,10 +9,20 @@ export const RequestMethod = {
   DELETE : 3
 }
 
+export const DateTimeFormat = {
+  YYYYMMDD : 'YYYYMMDD'
+}
+
+Date.prototype.addDays = function(days) {
+  var dat = new Date(this.valueOf())
+  dat.setDate(dat.getDate() + days)
+  return dat
+}
+
+
 function responseSuccess (req, res, data){
   data = _.toArray(data)
 }
-
 
 export function callRequest (url,data,method = 'GET') {
   try {
@@ -119,13 +130,6 @@ export function responseError (req, res, err) {
     res.sendStaus(500)
   }
 }
-//
-Date.prototype.addDays = function(days) {
-  var dat = new Date(this.valueOf())
-  dat.setDate(dat.getDate() + days)
-  return dat
-}
-
 
 /**
 * get number of days between two date
@@ -137,8 +141,8 @@ export function dateDiff(date1,date2) {
   // if (!date1 && !date2) {
   //   return 0
   // }
-  let dateFrom = new Date(moment.utc(date1))
-  let dateTo = new Date(moment.utc(date2))
+  let dateFrom = new Date(moment.utc(date1,'YYYYMMDD'))
+  let dateTo = new Date(moment.utc(date2,'YYYYMMDD'))
   let timeDiff = Math.abs(dateTo.getTime() - dateFrom.getTime())
   let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))
 
@@ -148,16 +152,38 @@ export function dateDiff(date1,date2) {
 /**
 * convert 2 Datetime to Array date between that
 * @param { Datetime } startDate
-* @param { Datetim } stopDate
+* @param { Datetime } stopDate
 * @return { Array } date format 'YYYYMMDD'
 */
-export function getBetweenDateArray(startDate, stopDate , dateFormat = 'YYYYMMDD') {
+export function getEveryDaysBetweenDate(startDate, stopDate , outDateFormat = DateTimeFormat.YYYYMMDD) {
   var dateArray = []
-  var currentDate = startDate
-  while (currentDate <= stopDate) {
-    dateArray.push(moment(currentDate).format(dateFormat))
+  var currentDate = new Date(moment(startDate,DateTimeFormat.YYYYMMDD))
+  let _stopDate =  new Date(moment(stopDate,DateTimeFormat.YYYYMMDD))
+  while (currentDate <= _stopDate) {
+    dateArray.push(moment(currentDate).format(outDateFormat))
     currentDate = currentDate.addDays(1)
   }
   //console.log(dateArray)
   return dateArray
+}
+
+/**
+* convert 2 Datetime to Array date between that
+* @param { Object } dateFrom , dateTo
+* @return { String } date format 'YYYYMMDD'
+*/
+export function datetimeQueryString(data) {
+  let arrayDate = getEveryDaysBetweenDate(data.dateFrom,data.dateTo)
+  //console.log(`arrayDate` , arrayDate)
+  let text = ''
+  for (var i = 0; i < arrayDate.length; i++) {
+    if (i < arrayDate.length - 1) {
+      text += `'${arrayDate[i]}',`
+    } else{
+      text += `'${arrayDate[i]}'`
+    }
+
+  }
+  //console.log(text)
+  return text
 }

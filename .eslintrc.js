@@ -29,7 +29,7 @@ module.exports = {
         // "browser": true,
         // "mocha": true
     },
-    //"extends": "eslint:recommended",
+    //"extends": "airbnb",
     "parserOptions": {
       "ecmaFeatures": {
           "jsx": true,
